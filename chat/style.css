@@ -1,0 +1,295 @@
+.inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+body {
+  background-color: #0b151a !important;
+}
+.chat {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #101D25;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  color: #fff;
+}
+@media screen and (min-width: 768px) {
+  .chat {
+    top: auto;
+    left: auto;
+    right: 15px;
+    bottom: 15px;
+    width: 400px;
+    height: 600px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px -2px rgba(0, 0, 0, 0.6);
+  }
+}
+.chat > .header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #1f3949;
+  height: 50px;
+}
+.chat > .header > button {
+  position: absolute;
+  top: 0;
+  background: transparent;
+  border: 0;
+  width: 50px;
+  height: 50px;
+}
+@media screen and (min-width: 768px) {
+  .chat > .header > button {
+    display: none;
+  }
+}
+.chat > .header > button.left {
+  left: 0;
+}
+.chat > .header > button.right {
+  right: 0;
+}
+.chat > .header > .title {
+  position: absolute;
+  top: 0;
+  left: 50px;
+  right: 50px;
+  height: 50px;
+  line-height: 50px;
+}
+@media screen and (min-width: 768px) {
+  .chat > .header > .title {
+    left: 0;
+    right: 0;
+    padding: 0 15px;
+  }
+}
+.chat > .npn-panel {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  background-color: #182b37;
+  height: 70px;
+}
+.chat > .npn-panel .item {
+  float: left;
+  border-radius: 50%;
+  margin: 10px 0 0 10px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+.chat > .npn-panel .item .box {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+.chat > .npn-panel .item .box img {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+}
+.chat > .npn-panel .item .box .percent {
+  position: absolute;
+  top: 0;
+  width: 50px;
+  height: 50px;
+}
+.chat > .npn-panel .item .box .percent svg {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+.chat > .npn-panel .item .box .percent svg circle {
+  width: 50px;
+  height: 50px;
+  fill: none;
+  stroke-width: 5px;
+  stroke: #000;
+  transform: rotate(-90deg) translateX(2.5px) translateY(2.5px);
+  transform-origin: center;
+  stroke-dasharray: 138;
+  stroke-dashoffset: 0;
+}
+.chat > .npn-panel .item .box .percent svg circle.has-transition {
+  transition: all 800ms ease;
+}
+.chat > .npn-panel .item .box .percent svg circle:nth-child(1) {
+  stroke: #182b37;
+}
+.chat > .npn-panel .item .box .percent svg circle:nth-child(2) {
+  stroke-width: 5px;
+}
+.chat > .npn-panel .item .box .percent svg circle:nth-child(2).color-a {
+  stroke: #00e056;
+}
+.chat > .npn-panel .item .box .percent svg circle:nth-child(2).color-b {
+  stroke: #c2b200;
+}
+.chat > .npn-panel .item .box .percent svg circle:nth-child(2).color-c {
+  stroke: #f43803;
+}
+.chat > .body {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #101D25;
+}
+.chat > .body .content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 113px;
+  background-color: #101D25;
+  overflow-y: auto;
+}
+.chat > .body .content::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.chat > .body .content::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+.chat > .body .content::-webkit-scrollbar-thumb {
+  background: #212E36;
+  border: 0;
+  border-radius: 3px;
+}
+.chat > .body .content .overflow {
+  padding: 0 15px;
+  width: 100%;
+}
+.chat > .body .content .overflow .message-line {
+  margin-top: 15px;
+}
+.chat > .body .content .overflow .message-line .message {
+  position: relative;
+  background-color: #212E36;
+  border-radius: 4px;
+  padding: 8px;
+  color: #C1C8CE;
+  box-shadow: 0 6px 4px -4px rgba(0, 0, 0, 0.3);
+}
+.chat > .body .content .overflow .message-line .message .name {
+  font-weight: bold;
+  font-size: 10px;
+}
+.chat > .body .content .overflow .message-line.left .message,
+.chat > .body .content .overflow .message-line.right .message {
+  display: inline-block;
+  min-width: 100px;
+  max-width: 80%;
+}
+.chat > .body .content .overflow .message-line.left .message:after,
+.chat > .body .content .overflow .message-line.right .message:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -10px;
+  width: 0;
+  height: 0;
+  border-top: 15px solid #212E36;
+  border-left: 15px solid transparent;
+}
+.chat > .body .content .overflow .message-line.center {
+  background-color: rgba(255, 255, 255, 0.02);
+  padding-top: 4px;
+  padding-bottom: 4px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.chat > .body .content .overflow .message-line.center .message {
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  background-color: #1d4567;
+}
+.chat > .body .content .overflow .message-line.left .message {
+  float: left;
+}
+.chat > .body .content .overflow .message-line.left + .left {
+  margin-top: 4px;
+}
+.chat > .body .content .overflow .message-line.left + .left .message:after {
+  display: none;
+}
+.chat > .body .content .overflow .message-line.right .message {
+  float: right;
+  background-color: #192329;
+}
+.chat > .body .content .overflow .message-line.right .message:after {
+  left: auto;
+  right: -10px;
+  border-top-color: #192329;
+  border-left: 0;
+  border-right: 15px solid transparent;
+}
+.chat > .body .content .overflow .message-line.right + .right {
+  margin-top: 4px;
+}
+.chat > .body .content .overflow .message-line.right + .right .message:after {
+  display: none;
+}
+.chat > .body .footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #101D25;
+  height: 113px;
+}
+.chat > .body .footer .left {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 80px;
+  bottom: 15px;
+}
+.chat > .body .footer .right {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  bottom: 15px;
+  width: 50px;
+}
+.chat > .body .footer textarea {
+  background-color: #2C373D;
+  border: 0;
+  height: 83px;
+  color: #C1C8CE;
+}
+.chat > .body .footer .btn {
+  margin: 0;
+}
+.chat > .body .footer .btn:nth-child(2) {
+  margin-top: 15px;
+}
+.chat.has-npc-panel > .npn-panel {
+  display: block;
+}
+.chat.has-npc-panel > .body {
+  top: 120px;
+}

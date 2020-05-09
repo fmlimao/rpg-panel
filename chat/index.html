@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    <div id="AppVue">
+
+        <div class="chat" :class="{
+            'has-npc-panel': chat.hasNpcPanel
+        }">
+
+            <div class="header">
+
+                <button class="left">
+                    <span class="fa fa-arrow-left"></span>
+                </button>
+
+                <div class="title">
+                    Chat
+                </div>
+
+                <button class="right">
+                    <span class="fa fa-users"></span>
+                </button>
+
+            </div>
+
+            <div class="npn-panel">
+
+                <div class="item">
+                    <div class="box">
+                        <img src="https://www.gravatar.com/avatar/6a658be5e963f03846f825e95c267c69?s=200" alt="avatar">
+
+                        <div class="percent">
+                            <svg>
+                                <circle cx="22.5" cy="22.5" r="22.5"></circle>
+                                <circle cx="22.5" cy="22.5" r="22.5"
+                                    style="stroke-dashoffset: calc(-138 + (138 * 15) / 100);" class="color-c"></circle>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="box">
+                        <img src="https://www.gravatar.com/avatar/6a658be5e963f03846f825e95c267c69?s=200" alt="avatar">
+
+                        <div class="percent">
+                            <svg>
+                                <circle cx="22.5" cy="22.5" r="22.5"></circle>
+                                <circle cx="22.5" cy="22.5" r="22.5"
+                                    style="stroke-dashoffset: calc(-138 + (138 * 87) / 100);" class="color-a"></circle>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="box">
+                        <img src="https://www.gravatar.com/avatar/6a658be5e963f03846f825e95c267c69?s=200" alt="avatar">
+
+                        <div class="percent">
+                            <svg>
+                                <circle cx="22.5" cy="22.5" r="22.5"></circle>
+                                <circle cx="22.5" cy="22.5" r="22.5"
+                                    style="stroke-dashoffset: calc(-138 + (138 * 35) / 100);" class="color-b"></circle>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="body">
+
+                <div class="content" id="chatBoxContent">
+                    <div class="overflow" id="chatBoxOverflow">
+
+                        <div class="message-line" :class="messageLine.position" v-for="messageLine in chat.messages.list">
+                            <div class="message">
+                                <div class="name">{{messageLine.name}}</div>
+                                <div class="text" v-html="messageLine.message"></div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="footer">
+
+                    <div class="left">
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Mensagem"
+                                v-model="chat.form.message" @keyup.ctrl.enter="addMessage()"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="right">
+                        <button class="btn btn-primary btn-block" @click.prevent="addMessage()">
+                            <span class="fa fa-paper-plane"></span>
+                        </button>
+
+                        <button class="btn btn-primary btn-block">
+                            <span class="fa fa-cog"></span>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+
+
+<!-- <img src="WhatsApp Image 2020-05-03 at 19.15.25.jpeg" class="img-responsive"> -->
+
+<!--
+
+<div class="message-line left">
+    <div class="message">
+        <div class="name">Pessoa</div>
+        <div class="text">
+            Nostrud
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="message-line left">
+    <div class="message">
+        <div class="name">Pessoa</div>
+        <div class="text">
+            Nostrud dolor minim eiusmod do consequat laboris occaecat officia laboris.
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="message-line center">
+    <div class="message">
+        <div class="name">Pessoa</div>
+        <div class="text">
+            AQUI
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="message-line left">
+    <div class="message">
+        <div class="name">Pessoa</div>
+        <div class="text">
+            Nostrud dolor minim
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="message-line right">
+    <div class="message">
+        <div class="name">Pessoa</div>
+        <div class="text">
+            Nostrud dolor minim eiusmod do consequat laboris occaecat officia laboris.
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="message-line right">
+    <div class="message">
+        <div class="name">Pessoa</div>
+        <div class="text">
+            Nostrud dolor minim eiusmod do consequat laboris occaecat officia laboris.
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="message-line left">
+    <div class="message">
+        <div class="name">Pessoa</div>
+        <div class="text">
+            Nostrud dolor minim eiusmod do consequat laboris occaecat officia laboris.
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="message-line right">
+    <div class="message">
+        <div class="name">Pessoa</div>
+        <div class="text">
+            Nostrud dolor minim eiusmod do consequat laboris occaecat officia laboris.
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="message-line right">
+    <div class="message">
+        <div class="name">Pessoa</div>
+        <div class="text">
+            Nostrud dolor minim eiusmod do consequat laboris occaecat officia laboris.
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="message-line right">
+    <div class="message">
+        <div class="name">Pessoa</div>
+        <div class="text">
+            Nostrud dolor minim eiusmod do consequat laboris occaecat officia laboris.
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="message-line left">
+    <div class="message">
+        <div class="name">Pessoa</div>
+        <div class="text">
+            Nostrud dolor minim eiusmod do consequat laboris occaecat officia laboris.
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<div class="message-line right">
+    <div class="message">
+        <div class="name">Pessoa</div>
+        <div class="text">
+            Nostrud dolor minim eiusmod do consequat laboris occaecat officia laboris.
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+-->
